@@ -1,5 +1,5 @@
 <template>
-    <div class="add-blog">
+    <div id="add-blog">
       <h2>添加博客</h2>
       <form v-if="!submited">
         <label>博客标题</label>
@@ -78,5 +78,53 @@
 </script>
 
 <style scoped>
-
+  #add-blog{
+    box-sizing: border-box;
+  }
+  #add-blog{
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+  label{
+    display:block;
+    margin: 20px 0px 10px;
+  }
+  input [type="text"],textarea,select{
+    display: block;
+    width: 100%;
+    padding: 10px;
+  }
+  textarea{
+    height: 200px;
+  }
+  #checkboxes label{
+    display: inline-block;
+    margin-top: 5px;
+  }
+  #checkboxes input{
+    display: inline-block;
+    margin-right: 10px;
+  }
+  button{
+    display: block;
+    margin: 20px 0;
+    background: crimson;
+    color: #fff;
+    border: 0px;
+    padding: 14px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  #preview{
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    margin: 30px 0;
+  }
+  h3{
+    margin-top: 10px;
+  }
 </style>
