@@ -4,11 +4,14 @@ import Vue from 'vue'
 import App from './App'
 // import axios from 'axios'
 import VueResource from 'vue-resource'
+import VueRouter from 'vue-router'
+import Routes from './routes'
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
+Vue.use(VueRouter)
 
-//自定义指令
+//全局自定义指令
 Vue.directive('rainbow',{
   bind(el,binding,vnode){
     el.style.color="#" + Math.random().toString(16).slice(2,8)
@@ -30,18 +33,27 @@ Vue.directive("theme",{
   }
 })
 
-//自定义指令
-Vue.filter('to-upcase',function (value) {
-  return value.toUpperCase()
-})
+//全局自定义过滤器
+// Vue.filter('to-upcase',function (value) {
+//   return value.toUpperCase()
+// })
 Vue.filter('shorter',function (value) {
   return value.slice(0,100)  + "..."
 })
+
+//创建路由
+const router = new VueRouter({
+  routes:Routes,
+  mode:'history'
+})
+
+
 
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  router:router
 })

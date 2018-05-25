@@ -36,7 +36,26 @@
               return blog.title.match(this.search)
             })
           }
-      }
+      },
+      //局部自定义过滤器
+      filters:{
+          //这两种都行，如果还有别的过滤器就写在这个里边
+          // "to-upcase":function (value) {
+          //   return value.toUpperCase();
+          // }
+        toUpcase(value) {
+          return value.toUpperCase();
+        }
+
+      },
+      // 局部自定义指令
+      // directives:{
+      //     'rainbow':{
+      //       bind(el,binding,vnode){
+      //
+      //       }
+      //     }
+      // }
     }
 </script>
 
