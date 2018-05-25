@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 
 Vue.config.productionTip = false
 Vue.use(VueResource)
+
 //自定义指令
 Vue.directive('rainbow',{
   bind(el,binding,vnode){
@@ -20,7 +21,21 @@ Vue.directive("theme",{
     }else if(binding.value='narrow'){
       el.style.minWidth = "560px"
     }
+
+    if(binding.arg == 'column'){
+      el.style.background = '#6677cc';
+      el.style.padding= '20px'
+    }
+
   }
+})
+
+//自定义指令
+Vue.filter('to-upcase',function (value) {
+  return value.toUpperCase()
+})
+Vue.filter('shorter',function (value) {
+  return value.slice(0,100)  + "..."
 })
 
 

@@ -1,10 +1,11 @@
 <template>
-    <div id="show-blogs" v-theme="'wide'">
+    <div id="show-blogs" v-theme:column="'wide'">
       <h1>博客总览</h1>
-      <div v-for="signal in blogs" class="signal-blog">
-        <h2 v-rainbow>{{signal.title}}</h2>
+      <input type="text" placeholder="搜索" v-model="search">
+      <div v-for="signal in filteredBlogs" class="signal-blog">
+        <h2 v-rainbow>{{signal.title | to-upcase}}</h2>
         <article>
-          {{signal.body}}
+          {{signal.body | shorter}}
         </article>
       </div>
     </div>
@@ -15,7 +16,8 @@
         name: "show-blogs",
       data(){
           return{
-            blogs:[]
+            blogs:[],
+            search:""
           }
       },
       created(){
@@ -26,6 +28,14 @@
             this.blogs = data.body.splice(0,10);
             console.log(this.blogs)
           })
+      },
+      //与用户搜索相匹配
+      computed:{
+          filteredBlogs:function () {
+            return this.blogs.filter((blog)=>{
+              return blog.title.match(this.search)
+            })
+          }
       }
     }
 </script>
