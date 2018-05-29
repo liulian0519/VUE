@@ -3,7 +3,7 @@
       <h1>博客总览</h1>
       <input type="text" placeholder="搜索" v-model="search">
       <div v-for="signal in filteredBlogs" class="signal-blog">
-        <h2 v-rainbow>{{signal.title | to-upcase}}</h2>
+        <router-link :to="'/blog/' + signal.id"><h2 v-rainbow>{{signal.title | to-upcase}}</h2></router-link>
         <article>
           {{signal.body | shorter}}
         </article>
@@ -23,7 +23,7 @@
       created(){
         this.$http.get('https://jsonplaceholder.typicode.com/posts')
           .then(function (data) {
-            // console.log(data)
+             console.log(data)
             // console.log(data.body.splice(0,10))
             this.blogs = data.body.splice(0,10);
             console.log(this.blogs)
@@ -69,6 +69,17 @@
   box-sizing: border-box;
   margin: 20px 0;
   background: #ccc;
+  border: 1px dotted #aaa ;
 }
+  #show-blogs a{
+    text-decoration: none;
+    color: #444;
+  }
+  input[type='text']{
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
 
 </style>
