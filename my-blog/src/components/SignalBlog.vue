@@ -1,7 +1,12 @@
 <template>
     <div id="signal-blog">
-        <h1>{{blog.title}}</h1>
-      <h2>{{blog.body}}</h2>
+      <h1>{{blog.title}}</h1>
+      <h2>{{blog.content}}</h2>
+      <p>作者：{{blog.author}}</p>
+      <p>分类</p>
+      <ul>
+        <li v-for="s in blog.solt">{{s}}</li>
+      </ul>
     </div>
 </template>
 
@@ -15,10 +20,15 @@
           }
       },
       created(){
-          this.$http.get('https://jsonplaceholder.typicode.com/posts/'+this.id)
+          this.$http.get('https://vue-domo.firebaseio.com/posts/'+this.id + ".json")
             .then(function (data) {
               // console.log(data)
-              this.blog=data.body
+             // this.blog=data.body
+              return data.json()
+            })
+            .then(function (data) {
+              // console.log(data);
+              this.blog = data
             })
       }
     }

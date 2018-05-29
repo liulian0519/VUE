@@ -2,10 +2,11 @@
     <div id="show-blogs" v-theme:column="'wide'">
       <h1>博客总览</h1>
       <input type="text" placeholder="搜索" v-model="search">
+      <!--之前遍历的是 blog     现在应该遍历computed 里边的那个filterBlogs-->
       <div v-for="signal in filteredBlogs" class="signal-blog">
         <router-link :to="'/blog/' + signal.id"><h2 v-rainbow>{{signal.title | to-upcase}}</h2></router-link>
         <article>
-          {{signal.body | shorter}}
+          {{signal.content | shorter}}
         </article>
       </div>
     </div>
@@ -21,11 +22,24 @@
           }
       },
       created(){
-        this.$http.get('https://jsonplaceholder.typicode.com/posts')
+        //  从firebase中读取拿到所有信息
+        this.$http.get('https://vue-domo.firebaseio.com/posts.json')
           .then(function (data) {
-             console.log(data)
-            // console.log(data.body.splice(0,10))
-            this.blogs = data.body.splice(0,10);
+            return data.json()
+            // console.log(data.json())
+            // console.log(data)
+            // this.blogs = data.body.splice(0,10);
+            // console.log(this.blogs)
+          })
+          .then(function (data) {
+            var blogArray =[];
+            for(let key in data){
+              // console.log(key);
+              // console.log(data[key])
+              data[key].id = key;
+              blogArray.push(data[key]);
+            }
+            this.blogs = blogArray;
             console.log(this.blogs)
           })
       },
@@ -33,6 +47,7 @@
       computed:{
           filteredBlogs:function () {
             return this.blogs.filter((blog)=>{
+              //匹配search和 title 是否一致
               return blog.title.match(this.search)
             })
           }

@@ -63,13 +63,10 @@
       },
       methods:{
           post:function () {
-            this.$http.post("http://jsonplaceholder.typicode.com/posts",{
-              title:this.blog.title,
-              body:this.blog.content,
-              userId:1
-            })
+            //将自己添加的博客信息写入fire Bases中
+            this.$http.post("https://vue-domo.firebaseio.com/posts.json",this.blog)
               .then(function (data) {
-                console.log(data);
+                // console.log(data);
                 this.submited=true
               })
           }
