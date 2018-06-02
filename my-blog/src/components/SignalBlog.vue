@@ -7,6 +7,8 @@
       <ul>
         <li v-for="s in blog.solt">{{s}}</li>
       </ul>
+      <button @click="DeleteSignalBlog">删除</button>
+      <router-link :to="/edit/" + id>编辑博客</router-link>
     </div>
 </template>
 
@@ -30,6 +32,14 @@
               // console.log(data);
               this.blog = data
             })
+      },
+      methods:{
+        DeleteSignalBlog(){
+          this.$http.delete('https://vue-domo.firebaseio.com/posts/'+this.id + ".json")
+            .then(response=>{
+              this.$router.push({path:'/'})
+            })
+        }
       }
     }
 </script>
@@ -41,6 +51,19 @@
   margin: 0 auto;
   background: #eee;
   border: 1px dotted #aaa;
+}
+button{
+  display: block;
+  margin: 20px 0;
+  background: crimson;
+  color: #fff;
+  border: 0px;
+  padding: 14px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
 }
 
 </style>
