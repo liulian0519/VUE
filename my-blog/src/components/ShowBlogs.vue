@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "show-blogs",
       data(){
@@ -23,15 +24,15 @@
       },
       created(){
         //  从firebase中读取拿到所有信息
-        this.$http.get('https://vue-domo.firebaseio.com/posts.json')
+       axios.get('/posts.json')
           .then(function (data) {
-            return data.json()
+            return data.data
             // console.log(data.json())
             // console.log(data)
             // this.blogs = data.body.splice(0,10);
             // console.log(this.blogs)
           })
-          .then(function (data) {
+          .then((data)=> {
             var blogArray =[];
             for(let key in data){
               // console.log(key);
@@ -40,7 +41,7 @@
               blogArray.push(data[key]);
             }
             this.blogs = blogArray;
-            console.log(this.blogs)
+            // console.log(this.blogs)
           })
       },
       //与用户搜索相匹配

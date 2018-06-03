@@ -8,11 +8,12 @@
         <li v-for="s in blog.solt">{{s}}</li>
       </ul>
       <button @click="DeleteSignalBlog">删除</button>
-      <router-link :to="/edit/" + id>编辑博客</router-link>
+      <router-link :to="'/edit/' + id">编辑博客</router-link>
     </div>
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "SignalBlog",
       data(){
@@ -22,22 +23,24 @@
           }
       },
       created(){
-          this.$http.get('https://vue-domo.firebaseio.com/posts/'+this.id + ".json")
+          axios.get('/posts/'+this.id + '.json')
             .then(function (data) {
-              // console.log(data)
+              // console.log(this.id);
+                // console.log(data)
              // this.blog=data.body
-              return data.json()
+              return data.data
             })
-            .then(function (data) {
-              // console.log(data);
+            .then((data)=> {
+               console.log(data);
               this.blog = data
             })
       },
       methods:{
         DeleteSignalBlog(){
-          this.$http.delete('https://vue-domo.firebaseio.com/posts/'+this.id + ".json")
+          axios.delete('/posts/'+this.id + ".json")
             .then(response=>{
-              this.$router.push({path:'/'})
+              this.$router.push({path:'/'});
+              alert("删除成功");
             })
         }
       }
@@ -64,6 +67,22 @@ button{
   border-radius: 4px;
   font-size: 18px;
   cursor: pointer;
+  float: left;
+}
+a{
+  background-color: crimson;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  border: 0px;
+  padding: 14px;
+  margin: 20px 50px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  /*float:right;*/
 }
 
 </style>

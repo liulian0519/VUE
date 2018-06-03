@@ -47,6 +47,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "Add-blog",
       data(){
@@ -64,11 +65,14 @@
       methods:{
           post:function () {
             //将自己添加的博客信息写入fire Bases中
-            this.$http.post("https://vue-domo.firebaseio.com/posts.json",this.blog)
-              .then(function (data) {
-                // console.log(data);
-                this.submited=true
-              })
+            // this.$http.post("https://wd5983071599kadgpv.wilddogio.com/th
+
+              axios.post("/posts.json",this.blog)
+                .then((data)=> {
+                  this.submited=true
+                })
+
+
           }
       }
     }

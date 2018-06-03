@@ -2,14 +2,18 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-// import axios from 'axios'
+ import axios from 'axios'
 import VueResource from 'vue-resource'
 import VueRouter from 'vue-router'
 import Routes from './routes'
 
 Vue.config.productionTip = false
-Vue.use(VueResource)
+// Vue.use(VueResource)
 Vue.use(VueRouter)
+
+//全局配置axios
+axios.defaults.baseURL='https://wd5983071599kadgpv.wilddogio.com'
+// axios.defaults.headers.common['Authorization'] = 'Token'
 
 //全局自定义指令
 Vue.directive('rainbow',{

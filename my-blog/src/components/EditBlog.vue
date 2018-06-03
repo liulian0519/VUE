@@ -62,7 +62,7 @@
     },
     methods:{
       fetchData(){
-        this.$http.get('https://vue-domo.firebaseio.com/posts/'+this.id + ".json")
+        this.$http.get('/posts/'+this.id + ".json")
           .then(response=>{
             // console.log(response.body);g
             this.blog = response.body
@@ -70,7 +70,7 @@
       },
       post:function () {
         //将自己bianji的博客信息写入fire Bases中
-        this.$http.put('https://vue-domo.firebaseio.com/posts/'+this.id + ".json",this.blog)
+        this.$http.put('/posts/'+this.id + ".json",this.blog)
           .then(function (data) {
             // console.log(data);
             this.submited=true
@@ -78,7 +78,7 @@
       }
     },
     created(){
-      fetchData();
+     this.fetchData()
     }
   }
 </script>
