@@ -1,6 +1,7 @@
 <template>
     <div id="show-blogs" v-theme:column="'wide'">
       <h1>博客总览</h1>
+      <!--这里是搜索-->
       <input type="text" placeholder="搜索" v-model="search">
       <!--之前遍历的是 blog     现在应该遍历computed 里边的那个filterBlogs-->
       <div v-for="signal in filteredBlogs" class="signal-blog">

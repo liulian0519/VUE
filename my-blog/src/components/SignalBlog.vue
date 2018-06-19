@@ -25,9 +25,6 @@
       created(){
           axios.get('/posts/'+this.id + '.json')
             .then(function (data) {
-              // console.log(this.id);
-                // console.log(data)
-             // this.blog=data.body
               return data.data
             })
             .then((data)=> {

@@ -48,6 +48,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "Add-blog",
     data(){
@@ -56,24 +57,28 @@
         blog:{
 
         },
+        submited:false,
         authors:['liulian',"soul","daidong"],
-        submited:false
+
       }
     },
     methods:{
       fetchData(){
-        this.$http.get('/posts/'+this.id + ".json")
+        axios.get('/posts/'+this.id + ".json")
           .then(response=>{
+            console.log(response.data)
             // console.log(response.body);g
-            this.blog = response.body
+             this.blog = response.data
           })
       },
       post:function () {
         //将自己bianji的博客信息写入fire Bases中
-        this.$http.put('/posts/'+this.id + ".json",this.blog)
-          .then(function (data) {
+        // _this =this
+        axios.put('/posts/'+this.id + ".json",this.blog)
+          .then( (data)=> {
+           this.submited = true
             // console.log(data);
-            this.submited=true
+            // this.submited=true
           })
       }
     },

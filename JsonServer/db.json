@@ -1,31 +1,188 @@
 {
-  "users": [
+  "user1": [
     {
-      "name": "liulian",
-      "phone": "13609219504",
-      "email": "1223342263@qq.com",
-      "education": "本科",
       "id": "1",
-      "age": "20",
-      "profile": "lalallalallalalla"
+      "emp_no": "000001",
+      "emp_pass": "123456",
+      "type": 1,
+      "head_path": null
     },
     {
-      "name": "soul",
-      "phone": "13609219520",
-      "email": "1223342220@qq.com",
-      "education": "本科",
       "id": "2",
-      "age": "19",
-      "profile": "lalallalallalalla"
+      "emp_no": "000002",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
     },
+    {
+      "id": "3",
+      "emp_no": "000003",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "id": "4",
+      "emp_no": "000004",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "id": "5",
+      "emp_no": "000005",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "id": "6",
+      "emp_no": "000006",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "id": "7",
+      "emp_no": "000007",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "id": "8",
+      "emp_no": "test01",
+      "emp_pass": "123456",
+      "type": 0,
+      "head_path": null
+    },
+    {
+      "number": "",
+      "type": "",
+      "id": "~LnUM9~"
+    },
+    {
+      "number": "00",
+      "type": "0",
+      "id": "AOnsnub"
+    },
+    {
+      "number": "",
+      "type": "",
+      "id": "QxT8PPe"
+    },
+    {
+      "number": "2",
+      "type": "0",
+      "id": "iSOw6av"
+    },
+    {
+      "number": "0000009",
+      "type": "0",
+      "id": "X5ltdBp"
+    },
+    {
+      "number": "",
+      "type": "",
+      "id": "WfPRU2U"
+    },
+    {
+      "number": "000001",
+      "type": "1",
+      "id": "n8Kia~p"
+    },
+    {
+      "number": "11111",
+      "type": "1",
+      "id": "20hOyaM"
+    },
+    {
+      "number": "777777",
+      "type": "1",
+      "id": "LnLplFw"
+    },
+    {
+      "number": "777777",
+      "type": "1",
+      "id": "LnYJ67J"
+    },
+    {
+      "number": "test001",
+      "type": "0",
+      "id": "3LcPbD1"
+    },
+    {
+      "number": "test001",
+      "type": "0",
+      "id": "ImIqyGq"
+    },
+    {
+      "number": "test00007",
+      "type": "1",
+      "id": "4_pe7Ad"
+    },
+    {
+      "number": "test00008",
+      "type": "1",
+      "id": "1Zjoe_x"
+    },
+    {
+      "number": "test0007",
+      "type": "1",
+      "id": "NVKZYRM"
+    },
+    {
+      "number": "test01",
+      "type": "1",
+      "id": "fGQOfts"
+    },
+    {
+      "number": "rr",
+      "type": "rr",
+      "id": "VJ1KPvW"
+    },
+    {
+      "emp_no": "1",
+      "id": "6vx6mAj"
+    },
+    {
+      "emp_no": "1",
+      "id": "Le5PL6q"
+    },
+    {
+      "emp_no": "test05",
+      "emp_pass": "123456",
+      "type": "0",
+      "id": "v1TQX05"
+    },
+    {
+      "id": "WINPUit"
+    },
+    {
+      "id": "0ypds19"
+    },
+    {
+      "id": "zZTikXO"
+    },
+    {
+      "id": "daLjH_g"
+    },
+    {
+      "emp_no": "020202",
+      "emp_pass": "123456",
+      "type": "0",
+      "id": "cS8tpmG"
+    }
+  ],
+  "users": [
     {
       "name": "刘莲",
       "phone": "18292459148",
       "email": "245145816@qq.com",
-      "id": "3",
+      "age": "74",
       "education": "本科",
-      "age": "21",
-      "profile": "lalallalallalalla"
+      "profile": "lalallalallalalla",
+      "id": "3"
     },
     {
       "name": "dachui",
@@ -80,6 +237,54 @@
       "education": "ss",
       "profile": "ss",
       "id": "NenqCcZ"
+    },
+    {
+      "name": "烦烦烦发不",
+      "phone": "帆帆发",
+      "email": "vv",
+      "age": "vv",
+      "education": "vv",
+      "profile": "vv",
+      "id": "kn_jb2w"
+    },
+    {
+      "name": "vvv",
+      "phone": "vv",
+      "email": "vv",
+      "age": "vv",
+      "education": "vv",
+      "profile": "vv",
+      "id": "iRBBp8_"
+    },
+    {
+      "name": "quan",
+      "phone": "sss",
+      "email": "sss",
+      "age": "sss",
+      "education": "ss",
+      "profile": "sss",
+      "id": "V2C0qci"
+    },
+    {
+      "id": "~_RzCwm"
+    },
+    {
+      "id": "yGCcz6s"
+    },
+    {
+      "id": "W4MiyZu"
+    },
+    {
+      "id": "B~H4ZPp"
+    },
+    {
+      "name": "dd",
+      "phone": "dd",
+      "email": "dd",
+      "age": "dd",
+      "education": "ddd",
+      "profile": "dd",
+      "id": "EUw7ssz"
     }
   ],
   "class": [
@@ -97,6 +302,149 @@
       "id": "3",
       "name": "ClassThree",
       "descriptions": "classthree is 计算机科学与技术"
+    },
+    {
+      "id": "0EWZ9U4"
+    }
+  ],
+  "play": [
+    {
+      "id": "1",
+      "play_id": "1",
+      "play_name": "超时空同居",
+      "studio_name": "巨幕厅",
+      "schedue_time": "2018-06-8 8:00:00",
+      "schedue_ticket_price": "35"
+    },
+    {
+      "id": "2",
+      "play_id": "2",
+      "play_name": "复仇者联盟",
+      "studio_name": "巨幕厅",
+      "schedue_time": "2018-06-8 8:00:00",
+      "schedue_ticket_price": "33"
+    },
+    {
+      "id": "3",
+      "play_id": "3",
+      "play_name": "齐天大圣",
+      "studio_name": "巨幕厅",
+      "schedue_time": "2018-06-8 8:00:00",
+      "schedue_ticket_price": "30"
+    },
+    {
+      "play_name": "喜欢你",
+      "studio_name": "一号厅",
+      "schedue_time": "2018-07-14T17:00",
+      "schedue_ticket_price": "55",
+      "id": "3LLDfF5"
+    }
+  ],
+  "user": [
+    {
+      "id": "1",
+      "name": "刘莲",
+      "age": "20",
+      "sex": "femal",
+      "NO": "04153095"
+    },
+    {
+      "id": "2",
+      "name": "刘心",
+      "age": "19",
+      "sex": "femal",
+      "NO": "04153094"
+    },
+    {
+      "id": "3",
+      "name": "rrr",
+      "age": "20",
+      "sex": "male",
+      "NO": "04153098"
+    },
+    {
+      "id": "4",
+      "name": "j莲",
+      "age": "22",
+      "sex": "femal",
+      "NO": "04153052"
+    },
+    {
+      "id": "5",
+      "name": "刘22",
+      "age": "20",
+      "sex": "femal",
+      "NO": "04155395"
+    },
+    {
+      "id": "6",
+      "name": "pp",
+      "age": "20",
+      "sex": "femal",
+      "NO": "04153097"
+    },
+    {
+      "id": "7",
+      "name": "刘44",
+      "age": "20",
+      "sex": "femal",
+      "NO": "04153452"
+    },
+    {
+      "id": "5",
+      "name": "hhh",
+      "age": "5",
+      "sex": "femal",
+      "NO": "04153075"
+    },
+    {
+      "id": "1",
+      "name": "刘莲",
+      "age": "20",
+      "sex": "femal",
+      "NO": "04153014"
+    },
+    {
+      "id": "9oy_uWg"
+    },
+    {
+      "id": "nRRK~4S"
+    },
+    {
+      "id": "3uBQ66N"
+    },
+    {
+      "id": "UDMga1l"
+    },
+    {
+      "number": "00007",
+      "password": "15891",
+      "id": "WTvSS5z"
+    },
+    {
+      "name": "00007",
+      "phone": "15891",
+      "id": "MsflD67"
+    },
+    {
+      "name": "00007",
+      "phone": "15891",
+      "id": "bxyNudq"
+    },
+    {
+      "name": "00007",
+      "phone": "15891",
+      "id": "rTRo_OX"
+    },
+    {
+      "name": "00007",
+      "phone": "15891",
+      "id": "QZQKld9"
+    },
+    {
+      "number": "00007",
+      "type": "0",
+      "id": "HQRb6Ak"
     }
   ]
 }

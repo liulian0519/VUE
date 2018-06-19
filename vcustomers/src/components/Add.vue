@@ -1,5 +1,6 @@
 <template>
     <div class="add container">
+      <Alert v-if="alert" :message="alert"></Alert>
       <h1 class="page-header">添加用户</h1>
       <form v-on:submit="addCustomer">
         <div class="well">
@@ -37,18 +38,21 @@
 
 <script>
   import axios from 'axios'
+  import Alert from './Alert'
     export default {
         name: "Add",
       data(){
         return {
-          customers:{}
+          customers:{},
+          alert:''
         }
       },
       methods:{
           addCustomer(e) {
             // console.log(123);
             if(!this.customers.name || !this.customers.phone || !this.customers.email){
-              console.log("请添加对应信息");
+              // console.log("请添加对应信息");
+              this.alert = '请添加对应信息'
             }else{
               let newCustomers = {
                 name:this.customers.name,
@@ -66,11 +70,10 @@
               e.preventDefault();
             }
             e.preventDefault();
-              // axios.post('http://localhost:3000/users')
-              //   .then((response)=>{
-              //     console.log()
-              //   })
           }
+      },
+      components:{
+        Alert
       }
 
     }
