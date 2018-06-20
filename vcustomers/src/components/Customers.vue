@@ -20,7 +20,7 @@
           <th></th>
         </thead>
         <tbody>
-        <tr v-for="customer in filtercustomers">
+        <tr v-for="customer in  filtercustomers">
           <td>{{customer.name}}</td>
           <td>{{customer.phone}}</td>
           <td>{{customer.email}}</td>
@@ -54,7 +54,7 @@
         fetchCustomers(){
           axios.get('http://localhost:3000/users')
             .then( (response)=> {
-              console.log(response)
+              // console.log(response)
               this.customers = response.data
             })
         }
@@ -63,6 +63,7 @@
         filtercustomers:function () {
           return this.customers.filter((customer)=>{
             //匹配search和 name 是否一致  filter是es6的函数
+            // return customer.name.match(this.search)
             return customer.name.match(this.search)
           })
         }
