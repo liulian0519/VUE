@@ -7,6 +7,7 @@
       <span class="price">${{item.price}}</span>
     </li>
   </ul>
+
 </div>
 </template>
 
