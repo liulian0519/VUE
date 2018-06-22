@@ -5,3 +5,4 @@
 |JsonServer|Json数据|...|
 |my-blog|简易个人博客|https://github.com/liulian0519/VUE/tree/master/my-blog|
 |vcustomers|简易用户管理系统|https://github.com/liulian0519/VUE/tree/master/vcustomers|
+|vuex-playlist|Vuex入门|https://github.com/liulian0519/VUE/tree/master/vuex-playlist|
