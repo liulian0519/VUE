@@ -2,24 +2,47 @@
 <div id="product-list-one">
   <h2>Product List One</h2>
   <ul>
-    <li v-for="item in saleproducts">
+    <li v-for="item in saleProducts">
       <span class="name">{{item.name}}</span>
       <span class="price">${{item.price}}</span>
     </li>
   </ul>
-
+  <button @click="reduceAction(4)">降价</button>
 </div>
 </template>
 
 <script>
+  import {mapGetters} from 'vuex'
+  import {mapActions} from 'vuex'
     export default {
       computed:{
         products(){
           return this.$store.state.products;
         },
-        saleproducts(){
-         return this.$store.getters.saleProducts
-        }
+        // saleproducts(){
+        //  return this.$store.getters.saleProducts
+        // }
+        //相当于下边的 但下边的更加简单，方便
+        ...mapGetters([
+          "saleProducts",
+        ])
+      },
+      methods:{
+        ...mapActions([
+          "reduceAction"
+        ])
+        // reduce:function(amount){
+        //   //vue
+        //   // this.$store.state.products.forEach(product=>{
+        //   //   product.price -= 1;
+        //   // })
+        //
+        //   // mutations
+        //   //this.$store.commit('reducePrice')
+        //
+        //   //actions
+        //   this.$store.dispatch("reduceAction",amount);
+        // }
       }
     }
 </script>
