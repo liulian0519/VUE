@@ -7,15 +7,15 @@
         <a href="/" class="navbar-brand">Pizza点餐系统</a>
 
         <ul class="navbar-nav">
-          <li class="nav-item"><router-link class="nav-link" to="/">主页</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="menu">菜单</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="admin">管理</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="about">关于我们</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'homeLink'}">主页</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'menuLink'}">菜单</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'adminLink'}">管理</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'aboutLink'}">关于我们</router-link></li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><router-link class="nav-link" to="login">登陆</router-link></li>
-          <li class="nav-item"><router-link class="nav-link" to="register">注册</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'loginLink'}">登陆</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'registerLink'}">注册</router-link></li>
         </ul>
       </nav>
     </header>
