@@ -23,7 +23,12 @@ Vue.use(VueRouter)
 const routes =[
 {path:'/',name:"homeLink",component:Home},
   {path:'/menu',name:"menuLink",component:Menu},
-  {path:'/admin',name:"adminLink",component:Admin},
+  {path:'/admin',name:"adminLink",component:Admin
+    // beforeEnter:(to,from,next)=>{
+    // alert("请先登录")
+    //  路由独享守卫
+    // }
+    },
   //children 为二级路由的配置    二级路由下的三级路由
   {path:'/about',name:"aboutLink",redirect:'about/concat',component:About,children:[
       {'path':'/about/concat',name:'ConcatLink',redirect:'/concat/phone',component:Concat,children:[
@@ -43,6 +48,23 @@ const router = new VueRouter({
   routes,
   mode:'history'
 })
+//全局守卫
+// router.beforeEach((to,from,next)=>{
+//   if(to.path=='/login' || to.path=='/register'){
+//     next();
+//   }else{
+//     alert("请先登录");
+//     next('/login')
+//   }
+// })
+
+//后置钩子
+// router.afterEach((to,from)=>{
+//   alert("afterEach")
+// })
+
+//路由独享守卫
+
 
 
 
