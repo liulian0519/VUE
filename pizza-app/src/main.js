@@ -2,15 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import {routes} from "./routes";
-
+import axios from 'axios'
 Vue.use(VueRouter)
-
+axios.defaults.baseURL = 'https://pizza-1ab8b.firebaseio.com/'
 
 const router = new VueRouter({
   routes,
   mode:'history',
   scrollBehavior(to,from,savedPosition){
-    
+
   }
 })
 //全局守卫
