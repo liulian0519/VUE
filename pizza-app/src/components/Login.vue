@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "Login",
     data(){
@@ -35,7 +36,29 @@
     },
     methods:{
       onsubmit(){
-
+       axios.get('/user.json')
+         .then(res=>{
+           // console.log(res)
+            const data= res.data;
+            const user =[];
+            for(let key in data){
+              const use = data[key];
+              // console.log(use)
+              user.push(use);
+            }
+            // console.log(user);
+         //  实现过滤
+          let result = user.filter((user)=>{
+             return user.email === this.email&& user.password === this.password
+           })
+           // console.log(result)
+         //  判断
+           if(result != null && result.length>0){
+             this.$router.push({name:'homeLink'})
+           }else{
+              alert("账号或密码错误");
+           }
+         })
       }
     }
   }
