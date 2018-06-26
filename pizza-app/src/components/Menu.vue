@@ -1,6 +1,7 @@
 <template>
-<div>
-  <div class="col-sm-12">
+<div class="row">
+  <!--菜单-->
+  <div class="col-sm-12 col-md-8">
     <table class="table">
       <thead class="thead-default">
       <tr>
@@ -21,7 +22,38 @@
       </tbody>
     </table>
   </div>
-  {{basckets}}
+  <!--购物车-->
+  <div class="col-sm-12 col-md-4">
+    <div v-if="basckets.length>0">
+      <table class="table">
+        <thead class="thead-default">
+        <tr>
+          <th>数量</th>
+          <th>品种</th>
+          <th>价格</th>
+        </tr>
+        </thead>
+        <tbody v-for="item in basckets">
+        <tr>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" @click="decrease(item)">-</button>
+            <span>{{item.quality}}</span>
+            <button class="btn btn-sm btn-outline-danger" @click="increase(item)">+</button>
+          </td>
+          <td>{{item.name}}{{item.size}}</td>
+          <td>{{item.price * item.quality}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <p>总价：{{total}}</p>
+      <button class="btn btn-success btn-block">提交</button>
+    </div>
+    <div v-else>
+      {{basketText}}
+    </div>
+  </div>
+
+
 </div>
 </template>
 
@@ -31,6 +63,7 @@
       data(){
           return{
             basckets:[],
+            basketText:"购物车中没有任何东西",
             getMenuItem:{
               1:{
                 'name':'榴莲Pizza',
@@ -68,16 +101,57 @@
             }
         }
       },
+      computed:{
+        //  计算总价
+        total(){
+          let totalPrice =0
+          for(let index in this.basckets){
+            let item = this.basckets[index];
+            totalPrice += item.quality * item.price
+          }
+          return totalPrice
+        }
+      },
       methods:{
         goToBasket(item,option){
-          this.basckets.push({
+          let basket={
             name:item.name,
             size:option.size,
             price:option.price,
             quality:1
-          })
+          }
+          if(this.basckets.length>0){
+          //  过滤
+            let result = this.basckets.filter((basket)=>{
+              return (basket.name == item.name && basket.price == option.price)
+            });
+            if(result!=null && result.length>0){
+              result[0].quality++
+            }else{
+              this.basckets.push(basket);
+            }
+          }else{
+            this.basckets.push(basket);
+          }
 
+
+        },
+        //如果数量小于1，则删除此项
+        removeBacket(item){
+          console.log(this.basckets.indexOf(item))
+          this.basckets.splice(this.basckets.indexOf(item),1)
+        },
+        decrease(item){
+          item.quality--;
+          if(item.quality<=0){
+            this.removeBacket(item);
+          }
+        },
+        //数量++
+        increase(item){
+          item.quality++
         }
+
       }
     }
 </script>
