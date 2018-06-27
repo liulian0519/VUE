@@ -14,9 +14,9 @@
         <th>删除</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody v-for="item in getMenuItems" :key="item.name">
       <tr>
-        <td>榴莲pizza</td>
+        <td>{{item.name}}</td>
         <td>
           <button class="btn btn-outline-danger btn-sm">&times;</button>
         </td>
@@ -30,9 +30,34 @@
 <script>
   import NewPizza from './NewPizza'
     export default {
+    data(){
+      return{
+        getMenuItems:[]
+      }
+    },
     components:{
-
       'app-new-pizza':NewPizza
+    },
+    created(){
+      fetch("https://pizza-1ab8b.firebaseio.com/menu.json")
+        .then(res=>{
+          return res.json()
+        })
+        .then(data=>{
+          // console.log(data);
+          let menuArray =[];
+          for(let key in data){
+            // console.log(key);
+            // console.log(data[key])
+            data[key].id = key;
+            menuArray.push(data[key])
+          }
+          this.getMenuItems = menuArray
+          // console.log(this.getMenuItems)
+        })
+
+      }
+
     }
       // data(){
       //     return{
@@ -58,7 +83,7 @@
       // }
 
 
-    }
+
 </script>
 
 <style scoped>

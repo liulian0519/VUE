@@ -40,7 +40,7 @@
     </div>
   </div>
   <div class="form-group row mt-5">
-    <button class="btn btn-success btn-block">添加</button>
+    <button type="button" @click="addMenu" class="btn btn-success btn-block">添加</button>
   </div>
 
 </form>
@@ -53,6 +53,37 @@
           return{
             newPizza:{}
           }
+      },
+      methods:{
+        addMenu(){
+          // console.log(this.newPizza)
+
+          let data = {
+            name:this.newPizza.name,
+            description:this.newPizza.description,
+            options:[
+              {
+                size:this.newPizza.size1,
+                price:this.newPizza.price1
+              },
+              {
+                size:this.newPizza.size2,
+                price:this.newPizza.price2
+              }
+            ]
+          }
+        //  将data传给后台   axios  vue-resource  fetch
+          fetch("https://pizza-1ab8b.firebaseio.com/menu.json",{
+            method:"POST",
+            headers:{
+              "Content-type":'application/json'
+            },
+            body:JSON.stringify(data)       //将数据转化成Json格式
+          })
+            .then(res=>res.json())
+            .then(data=>this.$router.push({name:'menuLink'}))
+            .catch(err=>console.log(err))
+        }
       }
     }
 </script>
