@@ -18,7 +18,7 @@
       <tr>
         <td>{{item.name}}</td>
         <td>
-          <button class="btn btn-outline-danger btn-sm">&times;</button>
+          <button @click="deleteItem(item)" class="btn btn-outline-danger btn-sm">&times;</button>
         </td>
       </tr>
       </tbody>
@@ -56,6 +56,19 @@
           // console.log(this.getMenuItems)
         })
 
+      },
+      methods:{
+        deleteItem(item){
+          fetch("https://pizza-1ab8b.firebaseio.com/menu/" + item.id +"/.json",{
+            method:"DELETE",
+            headers:{
+              "Content-type":'application/json'
+            },
+          })
+            .then(res=> res.json())
+            .then(res=>this.$router.push({name:'menuLink'}))
+            .catch(err=>console.log(err))
+        }
       }
 
     }

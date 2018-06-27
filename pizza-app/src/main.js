@@ -4,7 +4,11 @@ import VueRouter from 'vue-router'
 import {routes} from "./routes";
 import axios from 'axios'
 Vue.use(VueRouter)
+//配置axios默认路径
 axios.defaults.baseURL = 'https://pizza-1ab8b.firebaseio.com/'
+//配置axios的原型
+Vue.prototype.http = axios
+
 
 const router = new VueRouter({
   routes,

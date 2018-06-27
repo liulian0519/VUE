@@ -58,47 +58,14 @@
 </template>
 
 <script>
+  import axios from 'axios'
     export default {
         name: "Menu",
       data(){
           return{
             basckets:[],
             basketText:"购物车中没有任何东西",
-            getMenuItem:{
-              1:{
-                'name':'榴莲Pizza',
-                'description':'这是你的最爱么？反正是我是我的最爱',
-                'options':[{
-                  'size':9,
-                  'price':18
-                },{
-                  'size':12,
-                  'price':48
-                }]
-              },
-              2:{
-                'name':'芝士Pizza',
-                'description':'芝士杀手，浓浓的芝士丝，食欲瞬间爆棚',
-                'options':[{
-                  'size':9,
-                  'price':28
-                },{
-                  'size':12,
-                  'price':68
-                }]
-              },
-              3:{
-                'name':'夏威夷Pizza',
-                'description':'众多人的默认选择',
-                'options':[{
-                  'size':9,
-                  'price':36
-                },{
-                  'size':12,
-                  'price':78
-                }]
-              },
-            }
+            getMenuItem:{}
         }
       },
       computed:{
@@ -112,7 +79,23 @@
           return totalPrice
         }
       },
+      created(){
+          this.fetchData()
+      },
       methods:{
+          fetchData(){
+            // fetch("https://pizza-1ab8b.firebaseio.com/menu.json")
+            //   .then(res=>{
+            //     return res.json()
+            //   })
+            //   .then(data=>{
+            //     this.getMenuItem = data
+            //   })
+            // axios.get("menu.json")
+            //   .then(res=>this.getMenuItem=res.data)
+            this.http.get("menu.json")
+              .then(res=>this.getMenuItem = res.data)
+          },
         goToBasket(item,option){
           let basket={
             name:item.name,
