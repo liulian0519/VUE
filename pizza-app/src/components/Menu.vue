@@ -70,7 +70,12 @@
       },
       computed:{
         getMenuItem(){
-          return this.$store.state.menuItems
+          //两种方法
+          //在vuex中获取数据
+          // return this.$store.state.menuItems
+
+        //  通过getters获取数据
+          return this.$store.getters.getMenuItems;
         },
         //  计算总价
         total(){
