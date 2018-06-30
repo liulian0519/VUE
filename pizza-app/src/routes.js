@@ -4,7 +4,7 @@ import Admin from './components/Admin'
 import About from './components/about/About'
 import Login from './components/Login'
 import Register from './components/Register'
-
+import Page from './components/Page'
 //二级路由
 import Concat from './components/about/Contact'
 import Delivery from './components/about/Delivery'
@@ -44,6 +44,7 @@ export const routes =[
       {'path':'/orderingGuidet',name:'OrderingGuideLink',component:OrderingGuide},
       {'path':'/history',name:'HistoryLink',component:History},
     ]},
+  {path:'/page',name:"pageLink",component:Page},
   {path:'/login',name:"loginLink",component:Login},
   {path:'/register',name:"registerLink",component:Register},
   {path:'*',redirect:'/'}     //匹配不到时，默认跳转至首页。

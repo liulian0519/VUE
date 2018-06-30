@@ -81,7 +81,8 @@
             body:JSON.stringify(data)       //将数据转化成Json格式
           })
             .then(res=>res.json())
-            .then(data=>this.$router.push({name:'menuLink'}))
+            // .then(data=>this.$router.push({name:'menuLink'}))
+            .then(data=>this.$store.commit('pushToMenuItem',data))
             .catch(err=>console.log(err))
         }
       }

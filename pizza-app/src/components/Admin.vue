@@ -32,11 +32,21 @@
     export default {
     data(){
       return{
-        getMenuItems:[]
+        // getMenuItems:[]
       }
     },
     components:{
       'app-new-pizza':NewPizza
+    },
+    computed:{
+      getMenuItems:{
+        get(){
+          return this.$store.state.menuItems
+        },
+        set(){
+
+        }
+      }
     },
     created(){
       fetch("https://pizza-1ab8b.firebaseio.com/menu.json")
@@ -52,8 +62,10 @@
             data[key].id = key;
             menuArray.push(data[key])
           }
-          this.getMenuItems = menuArray
+          //数据同步
+          // this.getMenuItems = menuArray
           // console.log(this.getMenuItems)
+          this.$store.commit('setMenuItems',menuArray)
         })
 
       },
@@ -66,7 +78,9 @@
             },
           })
             .then(res=> res.json())
-            .then(res=>this.$router.push({name:'menuLink'}))
+            //跳转删除，实际上需要刷新，所以不能这样，应该用Vuex
+            // .then(res=>this.$router.push({name:'menuLink'}))
+            .then(res=>this.$store.commit("removeMenuItem",item))
             .catch(err=>console.log(err))
         }
       }

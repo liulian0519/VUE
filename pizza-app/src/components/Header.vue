@@ -11,6 +11,7 @@
           <li class="nav-item"><router-link class="nav-link" :to="{name:'menuLink'}">菜单</router-link></li>
           <li class="nav-item"><router-link class="nav-link" :to="{name:'adminLink'}">管理</router-link></li>
           <li class="nav-item"><router-link class="nav-link" :to="{name:'aboutLink'}">关于我们</router-link></li>
+          <li class="nav-item"><router-link class="nav-link" :to="{name:'pageLink'}">分页测试</router-link></li>
         </ul>
 
         <ul class="navbar-nav ml-auto">

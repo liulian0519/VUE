@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import {routes} from "./routes";
 import axios from 'axios'
+import {store} from './store/store'
 Vue.use(VueRouter)
 //配置axios默认路径
 axios.defaults.baseURL = 'https://pizza-1ab8b.firebaseio.com/'
@@ -40,5 +41,6 @@ const router = new VueRouter({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

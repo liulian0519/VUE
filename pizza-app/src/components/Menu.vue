@@ -65,10 +65,13 @@
           return{
             basckets:[],
             basketText:"购物车中没有任何东西",
-            getMenuItem:{}
+            // getMenuItem:{}
         }
       },
       computed:{
+        getMenuItem(){
+          return this.$store.state.menuItems
+        },
         //  计算总价
         total(){
           let totalPrice =0
@@ -84,6 +87,7 @@
       },
       methods:{
           fetchData(){
+            //请求数据
             // fetch("https://pizza-1ab8b.firebaseio.com/menu.json")
             //   .then(res=>{
             //     return res.json()
@@ -93,8 +97,11 @@
             //   })
             // axios.get("menu.json")
             //   .then(res=>this.getMenuItem=res.data)
+            // this.http.get("menu.json")
+            //   .then(res=>this.getMenuItem = res.data)
+          //  将请求的数据存储到vuex中
             this.http.get("menu.json")
-              .then(res=>this.getMenuItem = res.data)
+              .then(res=>this.$store.commit("setMenuItems",res.data))
           },
         goToBasket(item,option){
           let basket={
