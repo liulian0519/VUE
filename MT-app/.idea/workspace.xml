@@ -13,7 +13,62 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Header.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mt-app/src/components/header/Header.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2436">
+              <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mt-app/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+              <folding>
+                <element signature="e#236#283#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goods.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mt-app/data/goods.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1764">
+              <caret line="168" column="46" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="46" />
+              <folding>
+                <element signature="e#12122#19484#0" />
+                <element signature="e#19546#26403#0" />
+                <element signature="e#26458#33126#0" />
+                <element signature="e#33184#42793#0" />
+                <element signature="e#42848#54232#0" />
+                <element signature="e#54287#59552#0" />
+                <element signature="e#59607#63983#0" />
+                <element signature="e#64041#67810#0" />
+                <element signature="n#!!block;n#poi_info#0;n#!!block;n#data#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Goods.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="649">
+              <caret line="139" column="8" lean-forward="true" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
+              <folding>
+                <element signature="e#1989#2056#0" />
+                <element signature="e#2079#2182#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,6 +77,11 @@
         <option value="Vue Single File Component" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mi</find>
+    </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -32,15 +92,16 @@
         <option value="$PROJECT_DIR$/mt-app/index.html" />
         <option value="$PROJECT_DIR$/mt-app/src/components/goods/Good.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/components/ratings/Rating.vue" />
-        <option value="$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/components/seller/Seller.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/components/ratings/Ratings.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/main.js" />
         <option value="$PROJECT_DIR$/mt-app/src/components/nav/Nav.vue" />
-        <option value="$PROJECT_DIR$/mt-app/data/goods.json" />
         <option value="$PROJECT_DIR$/mt-app/src/App.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/common/css/icon.css" />
+        <option value="$PROJECT_DIR$/mt-app/src/components/stat/Star.vue" />
         <option value="$PROJECT_DIR$/mt-app/src/components/header/Header.vue" />
+        <option value="$PROJECT_DIR$/mt-app/data/goods.json" />
+        <option value="$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue" />
       </list>
     </option>
   </component>
@@ -60,10 +121,11 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/mt-app/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-8" />
-    <option name="width" value="977" />
-    <option name="height" value="1088" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2130" />
+    <option name="y" value="-23" />
+    <option name="width" value="1220" />
+    <option name="height" value="1102" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -83,6 +145,42 @@
               <item name="MT-app" type="462c0819:PsiDirectoryNode" />
               <item name="mt-app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MT-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MT-app" type="462c0819:PsiDirectoryNode" />
+              <item name="mt-app" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MT-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MT-app" type="462c0819:PsiDirectoryNode" />
+              <item name="mt-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MT-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MT-app" type="462c0819:PsiDirectoryNode" />
+              <item name="mt-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MT-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MT-app" type="462c0819:PsiDirectoryNode" />
+              <item name="mt-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="goods" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MT-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MT-app" type="462c0819:PsiDirectoryNode" />
+              <item name="mt-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="goods" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -92,7 +190,7 @@
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vue-cs" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.prettier" value="true" />
     <property name="node.js.path.for.package.prettier" value="project" />
@@ -103,7 +201,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\goods\img" />
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\goods" />
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components" />
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\header\img" />
       <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\header" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\header\img" />
+      <recent name="E:\学习资料\classThree\VUE\MT-app\mt-app\src\components\stat\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -131,25 +237,29 @@
       <workItem from="1532694152973" duration="23200000" />
       <workItem from="1532835496187" duration="912000" />
       <workItem from="1532840550769" duration="1539000" />
+      <workItem from="1533176531840" duration="284000" />
+      <workItem from="1533177025411" duration="8006000" />
+      <workItem from="1533280970691" duration="14383000" />
+      <workItem from="1533342587860" duration="11350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25651000" />
+    <option name="totallyTimeSpent" value="59674000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18125" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -167,10 +277,77 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/header/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2436">
+          <caret line="116" column="25" lean-forward="true" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding>
+            <element signature="e#236#283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/data/goods.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2793">
+          <caret line="133" column="27" selection-start-line="133" selection-start-column="27" selection-end-line="133" selection-end-column="27" />
+          <folding>
+            <element signature="e#12122#19484#0" />
+            <element signature="e#19546#26403#0" />
+            <element signature="e#26458#33126#0" />
+            <element signature="e#33184#42793#0" />
+            <element signature="e#42848#54232#0" />
+            <element signature="e#54287#59552#0" />
+            <element signature="e#59607#63983#0" />
+            <element signature="e#64041#67810#0" />
+            <element signature="n#!!block;n#poi_info#0;n#!!block;n#data#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3360">
+          <caret line="160" column="22" lean-forward="true" selection-start-line="160" selection-start-column="22" selection-end-line="160" selection-end-column="22" />
+          <folding>
+            <element signature="e#1989#2056#0" />
+            <element signature="e#2079#2182#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/header/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/stat/Star.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="70" column="46" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/data/goods.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49791">
+          <caret line="2371" column="9" lean-forward="true" selection-start-line="2371" selection-start-column="9" selection-end-line="2371" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mt-app/src/components/HelloWorld.vue" />
     <entry file="file://$PROJECT_DIR$/mt-app/index.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -215,13 +392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mt-app/src/components/seller/Seller.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -236,13 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mt-app/src/components/header/Header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="57" column="36" lean-forward="true" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mt-app/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -250,24 +413,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mt-app/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mt-app/src/components/nav/Nav.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="903">
           <caret line="43" column="21" lean-forward="true" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mt-app/data/goods.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="2378" column="7" selection-start-line="2378" selection-start-column="7" selection-end-line="2378" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -289,6 +438,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/第一次美团直播素材和代码/mt-app/src/components/header/Header.vue" />
+    <entry file="file://$USER_HOME$/Desktop/2-1设计美团头部结构和样式/mt-app/src/components/header/Header.vue" />
+    <entry file="file://$USER_HOME$/Desktop/2-1设计美团头部结构和样式/mt-app/src/components/star/Star.vue" />
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/stat/Star.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="70" column="46" selection-start-line="70" selection-start-column="46" selection-end-line="70" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+          <folding>
+            <element signature="e#236#283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/header/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2436">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/第三次直播/mt-app/src/components/goods/Goods.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="153" column="14" selection-start-line="152" selection-end-line="153" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/data/goods.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1764">
+          <caret line="168" column="46" selection-start-line="168" selection-start-column="46" selection-end-line="168" selection-end-column="46" />
+          <folding>
+            <element signature="e#12122#19484#0" />
+            <element signature="e#19546#26403#0" />
+            <element signature="e#26458#33126#0" />
+            <element signature="e#33184#42793#0" />
+            <element signature="e#42848#54232#0" />
+            <element signature="e#54287#59552#0" />
+            <element signature="e#59607#63983#0" />
+            <element signature="e#64041#67810#0" />
+            <element signature="n#!!block;n#poi_info#0;n#!!block;n#data#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mt-app/src/components/goods/Goods.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="649">
+          <caret line="139" column="8" lean-forward="true" selection-start-line="139" selection-start-column="8" selection-end-line="139" selection-end-column="8" />
+          <folding>
+            <element signature="e#1989#2056#0" />
+            <element signature="e#2079#2182#0" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,5 +1,5 @@
 {
-  "name": "mt-app",
+  "name": "vue-cs",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "liulian0519 <1223342263@qq.com>",
@@ -10,7 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "better-scroll": "^1.12.6",
+    "axios": "^0.18.0",
+    "element-ui": "^2.4.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

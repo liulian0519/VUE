@@ -35,7 +35,7 @@
           <h3>{{poInfo.name}}</h3>
         </div>
         <div class="collect">
-          <img src="./img/star.png">
+          <img src="img/star.png">
           <span>收藏</span>
         </div>
       </div>
@@ -54,42 +54,58 @@
       <!--公告内容结束-->
 
       <!--公告详情开始-->
-      <div class="bulletin-detail">
-        <div class="detail-wrapper">
-          <!--相关内容 容器-->
-          <div class="main-wrapper">
-            <div class="icon" :style="head_bg"></div>
-            <h3 class="name">{{poInfo.name}}</h3>
-            <!--星级评价-->
-            <!--起送 配送-->
-            <p class="tip">
-              {{poInfo.min_price_tip}}<i> </i> {{poInfo.shipping_fee_tip}}<i> </i> {{poInfo.delivery_time_tip}}
-            </p>
-            <p class="time">
-              配送时间：{{poInfo.delivery_time_tip}}
-            </p>
-            <div class="discounts" v-if="poInfo.discounts2">
-              <p>
-                <img :src="poInfo.discounts2[0].icon_url">
-                <span class="text" v-if="poInfo.discounts2">{{poInfo.discounts2[0].info}}</span>
+      <transition name="bulletin-detail">
+        <div class="bulletin-detail" v-show="isshow">
+          <div class="detail-wrapper">
+            <!--相关内容 容器-->
+            <div class="main-wrapper" :style="detail_bg">
+              <div class="icon" :style="head_bg"></div>
+              <h3 class="name">{{poInfo.name}}</h3>
+              <!--星级评价-->
+              <div class="score">
+                <!--传递分数-->
+                <app-star :score="poInfo.wm_poi_score"></app-star>
+                <span>{{poInfo.wm_poi_score}}</span>
+              </div>
+              <!--起送 配送-->
+              <p class="tip">
+                {{poInfo.min_price_tip}}<i> </i> {{poInfo.shipping_fee_tip}}<i> </i> {{poInfo.delivery_time_tip}}
               </p>
+
+              <p class="time">
+                配送时间：{{poInfo.delivery_time_tip}}
+              </p>
+
+              <div class="discounts" v-if="poInfo.discounts2">
+                <p>
+                  <img :src="poInfo.discounts2[0].icon_url">
+                  <span class="text" v-if="poInfo.discounts2">{{poInfo.discounts2[0].info}}</span>
+                </p>
+              </div>
+
+            </div>
+            <!--关闭那个 容器-->
+            <div class="close-wrapper">
+              <!--关闭按钮-->
+              <span class="icon-close" @click="closeBull"></span>
             </div>
           </div>
-          <!--关闭那个-->
-          <div class="close-wrapper">
-            <span class="icon-close" @click="closeBull"></span>
-          </div>
         </div>
-      </div>
-
+      </transition>
 
       <!--公告详情结束-->
     </div>
 </template>
 
 <script>
+  import Star from '../stat/Star'
     export default {
         name: "Header",
+      data(){
+          return{
+            isshow:false
+          }
+      },
       //接受传过来的poinfo
       props:{
           poInfo:{
@@ -103,10 +119,23 @@
           },
         head_bg(){
             return "background-image:url(" +this.poInfo.pic_url + ")"
+        },
+        detail_bg(){
+            return "background-image:url(" +this.poInfo.poi_back_pic_url + ")"
         }
       },
+      components:{
+          "app-star":Star
+      },
       methods:{
-
+          //点击展示公告详情
+        showdetail(){
+          this.isshow = true
+        },
+        //关闭容器
+        closeBull(){
+          this.isshow = false
+        }
       }
     }
 </script>
@@ -114,7 +143,7 @@
 <style scoped>
 @import "../../common/css/icon.css";
   .header{
-    height: 160px;
+    height: 130px;
     padding-top: 20px;
   }
   /*顶部通栏样式*/
@@ -280,4 +309,118 @@
     line-height: 16px;
     float: right;
   }
+  /*公告详情*/
+ .header .bulletin-detail{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   left: 0;
+   right: 0;
+   background: rgba(98,98,98,0.8);
+   z-index: 999;
+ }
+.header .bulletin-detail .detail-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 43px 20px 125px;
+  box-sizing: border-box;
+}
+.header .bulletin-detail .detail-wrapper .main-wrapper {
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .icon {
+  width: 60px;
+  height: 60px;
+  background-size: 135% 100%;
+  background-position: center;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 40px;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .name {
+  font-size: 15px;
+  color: white;
+  margin-top: 13px;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .score {
+  height: 10px;
+  margin-top: 6px;
+  text-align: center;
+  font-size: 0;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .score .star {
+  display: inline-block;
+  margin-right: 7px;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .score span {
+  display: inline-block;
+  font-size: 10px;
+  color: white;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .tip {
+  font-size: 11px;
+  color: #bababc;
+  margin-top: 8px;
+}
+
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .time {
+  font-size: 11px;
+  color: #bababc;
+  margin-top: 13px;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .discounts {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .discounts p {
+  padding-top: 20px;
+  border-top: 1px solid #BABABC;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .discounts img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.header .bulletin-detail .detail-wrapper .main-wrapper .discounts span {
+  font-size: 11px;
+  line-height: 16px;
+  color: white;
+}
+
+.header .bulletin-detail .detail-wrapper .close-wrapper {
+  padding-top: 20px;
+  height: 40px;
+  text-align: center;
+}
+
+/* 动画效果 */
+.bulletin-detail-enter-active,
+.bulletin-detail-leave-active {
+  transition: 2s all;
+}
+
+.bulletin-detail-enter,
+.bulletin-detail-leave-to {
+  opacity: 0;
+}
+
+.bulletin-detail-enter-to,
+.bulletin-detail-leave {
+  opacity: 1;
+}
 </style>
