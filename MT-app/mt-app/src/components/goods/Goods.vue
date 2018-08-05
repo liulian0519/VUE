@@ -25,6 +25,7 @@
       </li>
     </ul>
   </div>
+
   <!--商品列表-->
   <div class="foods-wrapper" ref="foodScroll">
     <ul>
@@ -54,16 +55,26 @@
                 <span class="unit">/{{food.unit}}</span>
               </p>
             </div>
+            <!--加减组件-->
+            <div class="cartcontrol-wrapper">
+              <app-cart-control :food="food" ></app-cart-control>
+            </div>
           </li>
         </ul>
       </li>
     </ul>
   </div>
+
+  <!--购物车-->
+  <app-shopcart :poin="poiInfo" :selectfoods="selectfoods"></app-shopcart>
+
 </div>
 </template>
 
 <script>
   import BScroll from 'better-scroll'
+  import Shopcart from '../shopcart/Shopcart'
+  import CartControl from '../cartcontrol/CartControl'
 
     export default {
         name: "Good",
@@ -71,6 +82,7 @@
           return{
             container:{},
             goods:[],
+            poiInfo:{},
             //元素高度的数组
             listHeigth:[],
             menuScroll:{},
@@ -78,6 +90,10 @@
             //存放滚动的值
             scrollY:0
           }
+      },
+      components:{
+          "app-shopcart":Shopcart,
+        "app-cart-control":CartControl
       },
       computed:{
         currentIndex(){
@@ -92,6 +108,20 @@
             }
           }
           return 0;
+        },
+        //监听foods有没有变化,如果有变化，传递给购物车
+        selectfoods(){
+          let foods = [];
+          this.goods.forEach((myfoods)=>{
+            myfoods.spus.forEach((food)=>{
+              if(food.count>0){
+                // console.log(food.count)
+                foods.push(food)
+              }
+            })
+          })
+           // console.log(foods.length)
+          return foods;
         }
       },
       methods:{
@@ -102,7 +132,8 @@
         initScroll(){
           this.menuScroll = new BScroll(this.$refs.menuScroll);
          this.foodScroll =  new BScroll(this.$refs.foodScroll,{
-           probeType:3
+           probeType:3,
+           click:true
          });
 
         // 给foodScroll添加滚动监听事件
@@ -149,7 +180,7 @@
               if(response.code == 0){
                 this.container = response.data.container_operation_source;
                 this.goods = response.data.food_spu_tags;
-
+                this.poiInfo = response.data.poi_info;
                 //DOM已经更新才会执行
                 this.$nextTick(()=>{
                   //执行滚动方法
@@ -192,6 +223,7 @@
 .goods .menu-wrapper .menu-item{
   padding: 16px 23px 15px 10px;
   border-bottom: 1px solid #e4e4e4;
+  position: relative;
 }
   .goods .menu-wrapper .menu-item .text{
     font-size: 13px;
@@ -204,7 +236,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .icon{
+.goods .menu-wrapper .menu-item .text .icon{
     width:15px ;
     height: 15px;
     vertical-align: middle;
@@ -300,5 +332,11 @@
   }
 .goods .menu-wrapper .menu-item:first-child.current{
   margin-top: 1px;
+}
+  /*加减号样式*/
+.goods .foods-wrapper .food-list .food-item .cartcontrol-wrapper{
+  position: absolute;
+  right: 0;
+  bottom:0;
 }
 </style>
