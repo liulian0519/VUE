@@ -2,19 +2,29 @@
     <div class="login">
       <Alert v-if="alert" :message="alert"></Alert>
       <el-form :model="loginForm" :rules="rules" ref="loginForm" class="regform">
-        <h3>系统登陆</h3>
+        <div class="text">
+          <p>欢迎登陆</p>
+          <p>CreatShare纳新系统</p>
+        </div>
+
         <el-form-item prop="phone">
+          <label>手机号</label>
           <el-input v-model.number="loginForm.phone" placeholder="请输入手机号"></el-input>
         </el-form-item>
-
+        <el-form-item class="valid">
+          <label style="display: block;" >图形码</label>
+          <el-input placeholder="请输入图形验证码" style="width: 190px;"></el-input>
+          <img :src="src">
+        </el-form-item>
         <el-form-item prop="vavid">
-          <el-input placeholder="请输入验证码"></el-input>
-          <span v-show="sendAuthCode" class="auth_text auth_text_blue" @click="getAuthCode('loginForm')">获取验证码</span>
+          <label>验证码</label>
+          <el-input placeholder="请输入短信验证码" class="a"></el-input>
+          <span  v-show="sendAuthCode" class="auth_text" @click="getAuthCode('loginForm')">获取验证码</span>
           <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue"> {{auth_time}}</span> s后重新发送</span>
         </el-form-item>
 
         <el-form-item>
-          <el-button type="primary" @click="check('loginForm')">登录</el-button>
+          <el-button type="primary" class="btn" @click="check('loginForm')">登录</el-button>
         </el-form-item>
 
       </el-form>
@@ -43,9 +53,9 @@
       return{
         loginForm:{
           phone:"",
-          vavid:""
-
+          code:""
         },
+        src:'http://note.youdao.com/yws/res/920/WEBRESOURCE29833d1d9e4c8b55a04306cfc4242472',
         alert:'',
         sendAuthCode:true, /*布尔值，通过v-show控制显示‘获取按钮'还是‘倒计时' */
         auth_time:0 ,  /*倒计时*/
@@ -61,7 +71,7 @@
       }
     },
     methods:{
-      //向后台发送手机号码，并设置倒计时
+      //向后台发送手机号码 和 图形验证码，并设置倒计时
       getAuthCode:function (formname) {
           this.$refs[formname].validate((valid)=>{
             if(valid){
@@ -88,7 +98,7 @@
           })
 
       },
-      //向后台发送手机号码和验证码 判断是否登陆成功
+      //向后台发送手机号码和短信验证码 判断是否登陆成功
       check:function(formname){
         this.$refs[formname].validate((valid)=>{
           if(valid && this.loginForm.vavid!=" "){
@@ -97,15 +107,16 @@
               url:"/fasong.json",
               data:{
                 phone:this.loginForm.phone,
-                valid:this.loginForm.vavid
+                code:this.loginForm.vavid
               }
             }).then(res=> {
               //登陆成功之后要做的事情
-              //if(res.code==0){
-            //  tiaozhuan
-            //}
+              console.log(res)
               if(res.status == 200){
                 // this.alert = "登录成功"
+                // let expireDays = 1;
+                // this.setCookie('session',res.data.sessionId,expireDays);
+
                 this.$router.push('/edit')
               }else{
                 this.alert = "请输入有效的验证码"
@@ -125,6 +136,16 @@
 
          })
       }
+    },
+    //刚一进来 就向后端发送请求获取图形验证码
+    created(){
+
+      this.http({
+        method:'get',
+        url:'/fasong.json'
+      }).then(res=>{
+        console.log(res);
+      })
     },
     components:{
       Alert
@@ -240,32 +261,100 @@
 </script>
 
 <style scoped>
-  .regform {
-    margin: 20px auto;
-    width: 310px;
-    background: #fff;
-    box-shadow: 0 0 10px #B4BCCC;
-    padding: 30px 30px 0 30px;
-    border-radius: 25px;
-  }
-  .auth_text{
+  .valid img{
+    width: 30%;
 
   }
-  .auth_input{
-    width:140px;
-    height:38px;
-    margin-bottom:20px;
-    border:1px solid #DCDFE6;
-    /* color:red; */
-    padding-left:10px;
-    border-radius: 8%;
+  .login{
+    display: flex;
+    height: 100%;
   }
-  .regform[data-v-92def6b0]{
-    width:370px;
-    min-height: 440px;
+.regform{
+  flex: 1;
+  margin: 61px 9% 0px 9%;
+  width: 100%;
+  position: relative;
+}
+.text{
+  height: 90px;
+  margin-bottom: 45px;
+}
+.regform p{
+    font-family: PingFang SC;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 30px;
+    color: #ffffff;
+}
+.regform label{
+    width: 42px;
+    height: 20px;
+    font-family: PingFang SC;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #ffffff;
+
+}
+.auth_text{
+  position: absolute;
+  right: 5%;
+  margin-top: -40px;
+  line-height:40px ;
+  color: #676c70;
+
+}
+.btn{
+ align-items: center;
+  border-color: #4adea3;
+  background-color: #4adea3;
+  width: 130px;
+  margin: 40px 25% 0 25%;
+  height: 40px;
+  border-radius: 25px;
+  text-align: center;
+}
+ /*错误的边框颜色*/
+ .el-form-item.is-error >>> .el-input__inner, .el-form-item.is-error .el-input__inner:focus, .el-form-item.is-error .el-textarea__inner, .el-form-item.is-error .el-textarea__inner:focus, .el-message-box__input input.invalid, .el-message-box__input >>> input.invalid:focus{
+   border-color: red !important;
   }
-  .login-text{
-    text-align: center;
-    margin-bottom:20px;
+  /*错误的提示颜色*/
+  .el-form-item.is-error >>> .el-form-item__error{
+    color: red !important;
+   }
+  /*正确的边框颜色*/
+  .el-form-item.is-success >>> .el-input__inner{
+  border-color: #dcdfe6 !important;
   }
+  /*.regform {*/
+    /*margin: 20px auto;*/
+    /*width: 310px;*/
+    /*background: #fff;*/
+    /*box-shadow: 0 0 10px #B4BCCC;*/
+    /*padding: 30px 30px 0 30px;*/
+    /*border-radius: 25px;*/
+  /*}*/
+  /*.auth_text{*/
+
+  /*}*/
+  /*.auth_input{*/
+    /*width:140px;*/
+    /*height:38px;*/
+    /*margin-bottom:20px;*/
+    /*border:1px solid #DCDFE6;*/
+    /*!* color:red; *!*/
+    /*padding-left:10px;*/
+    /*border-radius: 8%;*/
+  /*}*/
+  /*.regform[data-v-92def6b0]{*/
+    /*width:370px;*/
+    /*min-height: 440px;*/
+  /*}*/
+  /*.login-text{*/
+    /*text-align: center;*/
+    /*margin-bottom:20px;*/
+  /*}*/
 </style>
