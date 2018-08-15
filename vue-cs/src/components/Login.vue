@@ -1,24 +1,33 @@
 <template>
-    <div class="login">
-      <Alert v-if="alert" :message="alert"></Alert>
+
+    <div class="login1">
+      <!--<Alert v-if="alert" :message="alert"></Alert>-->
+      <el-alert
+        v-show="alert"
+        :title="alert"
+        type="error"
+        @close="failmessage()"
+        show-icon>
+      </el-alert>
+      <div class="login">
       <el-form :model="loginForm" :rules="rules" ref="loginForm" class="regform">
-        <div class="text">
+        <div class="text1">
           <p>欢迎登陆</p>
           <p>CreatShare纳新系统</p>
         </div>
-
         <el-form-item prop="phone">
           <label>手机号</label>
           <el-input v-model.number="loginForm.phone" placeholder="请输入手机号"></el-input>
         </el-form-item>
         <el-form-item class="valid">
           <label style="display: block;" >图形码</label>
-          <el-input placeholder="请输入图形验证码" style="width: 190px;"></el-input>
-          <img :src="src">
+          <el-input placeholder="请输入图形验证码" v-model="loginForm.valid" style="width: 190px;"></el-input>
+          <img :src="src" @click="AccesImg">
+          <!--<p >看不清</p>-->
         </el-form-item>
         <el-form-item prop="vavid">
           <label>验证码</label>
-          <el-input placeholder="请输入短信验证码" class="a"></el-input>
+          <el-input placeholder="请输入短信验证码" v-model="loginForm.code" class="a"></el-input>
           <span  v-show="sendAuthCode" class="auth_text" @click="getAuthCode('loginForm')">获取验证码</span>
           <span v-show="!sendAuthCode" class="auth_text"> <span class="auth_text_blue"> {{auth_time}}</span> s后重新发送</span>
         </el-form-item>
@@ -29,14 +38,14 @@
 
       </el-form>
     </div>
+    </div>
 </template>
 
 <script>
-  import axios from 'axios'
+import axios from 'axios'
   import Alert from './Alert'
   export default {
     data(){
-
       let telCheck = (rule, value, callback) => {
         if (value === '') {
           return callback(new Error('手机号码不能为空'))
@@ -47,16 +56,20 @@
         } else {
           callback()
         }
-      }
-
-
+      };
       return{
         loginForm:{
           phone:"",
+          //图形验证码
+          valid:"",
+          //手机验证码
           code:""
         },
-        src:'http://note.youdao.com/yws/res/920/WEBRESOURCE29833d1d9e4c8b55a04306cfc4242472',
+        mes:"fgjidfjgidjfg",
+        src:'',
         alert:'',
+        ms1:'请输入正确的图片验证码',
+        ms2:'请输入正确的短信验证码',
         sendAuthCode:true, /*布尔值，通过v-show控制显示‘获取按钮'还是‘倒计时' */
         auth_time:0 ,  /*倒计时*/
         rules:{
@@ -71,25 +84,49 @@
       }
     },
     methods:{
+      failmessage(){
+        if(this.alert == '请输入正确的图片验证码'){
+          this.loginForm.valid = ''
+        }
+        if(this.alert == '请输入正确的短信验证码'){
+          this.loginForm.code = ''
+        }
+        // console.log(title)
+
+        this.alert = ''
+      },
       //向后台发送手机号码 和 图形验证码，并设置倒计时
       getAuthCode:function (formname) {
           this.$refs[formname].validate((valid)=>{
             if(valid){
-              //向后台接口发送验证码
-              axios.post('/posts.json',this.loginForm.phone)
-                .then(data=>{
-                  console.log("成功")
-                })
-              this.sendAuthCode = false;
-              //设置倒计时秒
-              this.auth_time = 30;
-              var auth_timetimer = setInterval(()=>{
-                this.auth_time--;
-                if(this.auth_time<=0){
-                  this.sendAuthCode = true;
-                  clearInterval(auth_timetimer);
+              //向后台接口发送手机号码和图片验证码
+              console.log(this.loginForm.phone)
+              console.log(this.loginForm.valid)
+              let postData = this.$qs.stringify({
+                phone: this.loginForm.phone,
+                valid: this.loginForm.valid
+              });
+              this.http({
+                method: "post",
+                url: 'http://119.3.24.222:8080/nx/VerifyServlet',
+                data:postData,
+              }).then(res=>{
+                console.log(res);
+                if(res.data==true){
+                  this.sendAuthCode = false;
+                  //设置倒计时秒
+                  this.auth_time = 60;
+                  var auth_timetimer = setInterval(()=>{
+                    this.auth_time--;
+                    if(this.auth_time<=0){
+                      this.sendAuthCode = true;
+                      clearInterval(auth_timetimer);
+                    }
+                  }, 1000);
+                }else{
+                  this.alert = this.ms1
                 }
-              }, 1000);
+                })
             }
             else{
               console.log("err1");
@@ -101,51 +138,68 @@
       //向后台发送手机号码和短信验证码 判断是否登陆成功
       check:function(formname){
         this.$refs[formname].validate((valid)=>{
-          if(valid && this.loginForm.vavid!=" "){
+          if(valid && this.loginForm.code!=" "){
+            let testdata = this.$qs.stringify({
+              phone: this.loginForm.phone,
+              code: this.loginForm.code
+            });
             this.http({
               method:"post",
-              url:"/fasong.json",
-              data:{
-                phone:this.loginForm.phone,
-                code:this.loginForm.vavid
-              }
+              url:"http://119.3.24.222:8080/nx/LoginServlet",
+              data:testdata
             }).then(res=> {
               //登陆成功之后要做的事情
-              console.log(res)
-              if(res.status == 200){
-                // this.alert = "登录成功"
-                // let expireDays = 1;
-                // this.setCookie('session',res.data.sessionId,expireDays);
+                console.log(res);
+                //验证码输入错误
+                if(res.data == 0){
+                    this.alert = this.ms2
+                }
+                //首次登陆
+                if(res.data == 1){
+                    // console.log("首次登录") 跳转至填写信息界面
+                  this.$router.push({path: `/edit`})
 
-                this.$router.push('/edit')
-              }else{
-                this.alert = "请输入有效的验证码"
-              }
+                }
+                //并非首次登陆
+                if(res.data == 2){
+                  console.log("并非shouci登录")
+                //  跳转至个人信息页面
+                  this.$router.push({path: `/show`})
+                }
 
-              console.log(res);
+                //我把它放在这只是想测一下我的提示错误的功能
+                // this.alert = "请输入有效的验证码"
             }).catch(function(err){
               console.log(err);
             })
           }
           // else{
           //   console.log("err")
-          //   this.alert = "请输入有效的验证码 "
+          //   this.al rt = "请输入有效的验证码 "
           //   // this.$router.push({path:'/',query:{alert:"登录失败"}})
           //   return false
           // }
 
          })
+      },
+      AccesImg(){
+        //获取图片验证码
+        this.http({
+          method:'get',
+          url:'http://119.3.24.222:8080/nx/VerifyCodeServlet',
+          responseType: 'arraybuffer'
+        }).then(res=>{
+          return 'data:image/png;base64,' + btoa(
+            new Uint8Array(res.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+          )
+        }).then(data=>{
+          this.src=data
+        })
       }
     },
     //刚一进来 就向后端发送请求获取图形验证码
     created(){
-
-      this.http({
-        method:'get',
-        url:'/fasong.json'
-      }).then(res=>{
-        console.log(res);
-      })
+      this.AccesImg();
     },
     components:{
       Alert
@@ -262,8 +316,8 @@
 
 <style scoped>
   .valid img{
-    width: 30%;
-
+    width: 25%;
+    height: 90%;
   }
   .login{
     display: flex;
@@ -329,6 +383,14 @@
   .el-form-item.is-success >>> .el-input__inner{
   border-color: #dcdfe6 !important;
   }
+
+
+
+.el-message-box{
+    width: 100px;
+    background-color: red;
+  }
+
   /*.regform {*/
     /*margin: 20px auto;*/
     /*width: 310px;*/

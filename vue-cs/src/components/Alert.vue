@@ -1,11 +1,7 @@
 <template>
-
-    <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-    <!--{{message}}-->
-    <el-alert :title="message"
-
-      type="error">
-    </el-alert>
+  <div class="alert">
+    <el-alert :title="message" type="error" show-icon></el-alert>
+  </div>
 
 </template>
 
@@ -22,5 +18,11 @@
 </script>
 
 <style scoped>
-
+.alert{
+  width: 100%;
+  height: 20px;
+}
+  .alert >>> .el-alert{
+    padding: 5px;
+  }
 </style>
