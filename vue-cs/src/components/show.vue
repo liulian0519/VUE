@@ -5,10 +5,10 @@
       <!--{{ruleForm.name}} -&#45;&#45; {{ruleForm.interest}}-->
       <div class="wrapper">
         <div class="info">
-          <span class="name">{{ruleForm.name}}</span>
+          <span class="name">姓名{{ruleForm.name}}</span>
           <span class="mod"  @click="modify()">修改</span>
-          <p>{{ruleForm.sno}}</p>
-          <span class="interest">{{ruleForm.interest}}</span>
+          <p>{{this.$route.params.id}}</p>
+          <span class="interest">前端{{ruleForm.directed}}</span>
           <img src="../assets/creat.png">
         </div>
       </div>
@@ -49,19 +49,24 @@
       methods:{
           fechId(id){
             console.log(id);
-            axios.get('/user/'+id + '.json')
-              .then(response=>{
-                console.log(response)
-                this.ruleForm = response.data
-                var te = this.ruleForm.sno;
-                var one = te.toString().substring(0,3)
-                var two = te.toString().substring(3,7)
-                var three = te.toString().substring(7,11)
+                var one = id.toString().substring(0,3)
+                var two = id.toString().substring(3,7)
+                var three = id.toString().substring(7,11)
                 var phone = one + '-' + two + '-'+three
-                this.ruleForm.sno = phone
-                // console.log();
-
-              })
+            this.$route.params.id = phone
+            // axios.get('/user/'+id + '.json')
+            //   .then(response=>{
+            //     console.log(response)
+            //     this.ruleForm = response.data
+            //     var te = this.ruleForm.sno;
+            //     var one = te.toString().substring(0,3)
+            //     var two = te.toString().substring(3,7)
+            //     var three = te.toString().substring(7,11)
+            //     var phone = one + '-' + two + '-'+three
+            //     this.ruleForm.sno = phone
+            //     // console.log();
+            //
+            //   })
 
           },
           modify(){

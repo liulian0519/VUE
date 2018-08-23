@@ -112,7 +112,7 @@ import axios from 'axios'
                 data:postData,
               }).then(res=>{
                 console.log(res);
-                if(res.data==true){
+                if(res.data.indexOf(true)!=-1){
                   this.sendAuthCode = false;
                   //设置倒计时秒
                   this.auth_time = 60;
@@ -151,20 +151,21 @@ import axios from 'axios'
               //登陆成功之后要做的事情
                 console.log(res);
                 //验证码输入错误
-                if(res.data == 0){
+                if(res.data.msg == 0){
                     this.alert = this.ms2
                 }
                 //首次登陆
-                if(res.data == 1){
+                if(res.data.msg == 1){
                     // console.log("首次登录") 跳转至填写信息界面
                   this.$router.push({path: `/edit`})
 
                 }
                 //并非首次登陆
-                if(res.data == 2){
+                if(res.data.msg == 2){
                   console.log("并非shouci登录")
                 //  跳转至个人信息页面
                   this.$router.push({path: `/show`})
+
                 }
 
                 //我把它放在这只是想测一下我的提示错误的功能

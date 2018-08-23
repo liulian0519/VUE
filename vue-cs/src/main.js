@@ -26,8 +26,9 @@ const routes = [
     // requiresAuth:true
     // }
     },
-  {path:"/show",component:Show},
-  {path:'/modify',component:Modify},
+  {path:'/edit/:id',component:Show},
+  // {path:"/show",component:Show},
+  // {path:'/modify',component:Modify},
 
   {path:'*',redirect:'/'},
 

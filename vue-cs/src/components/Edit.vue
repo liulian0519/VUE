@@ -1,5 +1,12 @@
 <template>
   <div class="edit">
+    <el-alert
+      v-show="alert"
+      :title="alert"
+      type="error"
+      @close="failmessage()"
+      show-icon>
+    </el-alert>
     <p>填写信息</p>
     <el-form :label-position="labelPosition" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" status-icon>
       <el-form-item label="姓名" prop="name">
@@ -58,6 +65,7 @@
               qq:'',
               directed:''
             },
+            alert:'',
             labelPosition:'left',
             addre:"",
             rules:{
@@ -107,9 +115,16 @@
                 })
                 .then(res => {
                   console.log(res)
-                  if(res.data == true){
-                    this.$router.push({path: `/edit/${res.data.name}`})
+                  console.log(res.headers['Date']);
+                  if(res.data.phone!=''&& res.data.phone!='undefined'){
+
+                    // this.$router.push({path: `/edit/${res.data.phone}`})
+                  }else{
+                    this.alert = '操作失误'
                   }
+                  // if(res.data == true){
+                  //   this.$router.push({path: `/edit/${res.data.name}`})
+                  // }
                   // if (res.status == 200) {
                   //   // this.addre = '/edit/'+ this.ruleForm.id
                   //   // this.$router.push({path: `/edit/${res.data.name}`})
