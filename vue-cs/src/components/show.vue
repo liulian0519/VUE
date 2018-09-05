@@ -5,10 +5,10 @@
       <!--{{ruleForm.name}} -&#45;&#45; {{ruleForm.interest}}-->
       <div class="wrapper">
         <div class="info">
-          <span class="name">姓名{{ruleForm.name}}</span>
+          <span class="name">{{ruleForm.name}}</span>
           <span class="mod"  @click="modify()">修改</span>
           <p>{{this.$route.params.id}}</p>
-          <span class="interest">前端{{ruleForm.directed}}</span>
+          <span class="interest">{{ruleForm.directed}}</span>
           <img src="../assets/creat.png">
         </div>
       </div>
@@ -53,26 +53,28 @@
                 var two = id.toString().substring(3,7)
                 var three = id.toString().substring(7,11)
                 var phone = one + '-' + two + '-'+three
-            this.$route.params.id = phone
-            // axios.get('/user/'+id + '.json')
-            //   .then(response=>{
-            //     console.log(response)
-            //     this.ruleForm = response.data
-            //     var te = this.ruleForm.sno;
-            //     var one = te.toString().substring(0,3)
-            //     var two = te.toString().substring(3,7)
-            //     var three = te.toString().substring(7,11)
-            //     var phone = one + '-' + two + '-'+three
-            //     this.ruleForm.sno = phone
-            //     // console.log();
-            //
-            //   })
+                this.$route.params.id = phone
 
+            //向后端发送手机号  得到一些信息
+            let postData = this.$qs.stringify({
+              phone:id,
+            });
+            this.http({
+              method:'post',
+              url:'http://119.3.24.222:8080/nx/FindServlet',
+              data:postData
+            })
+              .then(res => {
+                console.log(res);
+                this.ruleForm = res.data;
+              })
+              .catch(function (err) {
+                console.log(err)
+              })
           },
           modify(){
             //携带id 跳转至修改信息页面
-
-            this.$router.replace('/modify/' + this.$route.params.id)
+            this.$router.replace('/modify/' + this.ruleForm.phone)
           }
 
       },

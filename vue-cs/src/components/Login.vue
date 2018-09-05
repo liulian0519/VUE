@@ -150,6 +150,9 @@ import axios from 'axios'
             }).then(res=> {
               //登陆成功之后要做的事情
                 console.log(res);
+                //存储token
+                const {token} = res.data;
+                window.localStorage.setItem('token',token)
                 //验证码输入错误
                 if(res.data.msg == 0){
                     this.alert = this.ms2
@@ -164,7 +167,8 @@ import axios from 'axios'
                 if(res.data.msg == 2){
                   console.log("并非shouci登录")
                 //  跳转至个人信息页面
-                  this.$router.push({path: `/show`})
+                  this.$router.push({path: `/edit/${res.data.phone}`})
+                  // this.$router.push({path: `/show`})
 
                 }
 
@@ -201,6 +205,9 @@ import axios from 'axios'
     //刚一进来 就向后端发送请求获取图形验证码
     created(){
       this.AccesImg();
+    },
+    mounted(){
+
     },
     components:{
       Alert

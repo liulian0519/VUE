@@ -15,7 +15,7 @@
       <el-form-item label="性别" prop="sex">
         <el-select v-model="ruleForm.sex" placeholder="请选择性别">
           <el-option label="男" value="1"></el-option>
-          <el-option label="女" value="1"></el-option>
+          <el-option label="女" value="0"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="学号" prop="number">
@@ -115,10 +115,11 @@
                 })
                 .then(res => {
                   console.log(res)
-                  console.log(res.headers['Date']);
+                  //获取请求头参数
+                  // console.log(res.headers['Date']);
                   if(res.data.phone!=''&& res.data.phone!='undefined'){
 
-                    // this.$router.push({path: `/edit/${res.data.phone}`})
+                    this.$router.push({path: `/edit/${res.data.phone}`})
                   }else{
                     this.alert = '操作失误'
                   }
@@ -141,10 +142,7 @@
             }
           })
         },
-        logout(){
-          this.delCookie('session');
-          this.$router.push('/login')
-        }
+
       }
   }
 

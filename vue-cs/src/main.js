@@ -6,8 +6,8 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import qs from 'qs'
-// import axios from './utils/http'
-import axios from 'axios'
+import axios from './utils/http'
+// import axios from 'axios'
 import Login from "./components/Login"
 import Edit from "./components/Edit"
 import Show from './components/show'
@@ -27,6 +27,7 @@ const routes = [
     // }
     },
   {path:'/edit/:id',component:Show},
+  {path:'/modify/:id',component:Modify},
   // {path:"/show",component:Show},
   // {path:'/modify',component:Modify},
 
@@ -52,14 +53,14 @@ Vue.prototype.$qs = qs
 Vue.use(Element)
 
 // 全局守卫
-// router.beforeEach((to,from,next)=>{
-//   const islogin = localStorage.token?true:false;
-//   if(to.path == "/login" || to.path == "/"){
-//     next();
-//   }else{
-//     islogin?next():next('login')
-//   }
-// })
+router.beforeEach((to,from,next)=>{
+  const islogin = localStorage.token?true:false;
+  if(to.path == "/login" || to.path == "/"){
+    next();
+  }else{
+    islogin?next():next('/login')
+  }
+})
 
 
 

@@ -1,5 +1,12 @@
 <template>
     <div class="modify">
+      <el-alert
+        v-show="alert"
+        :title="alert"
+        type="error"
+        @close="failmessage()"
+        show-icon>
+      </el-alert>
       <p>修改信息</p>
       <el-form :label-position="labelPosition" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" status-icon>
         <el-form-item label="姓名" prop="name">
@@ -7,21 +14,21 @@
         </el-form-item>
         <el-form-item label="性别" prop="sex">
           <el-select v-model="ruleForm.sex" placeholder="请选择性别">
-            <el-option label="男" value="男"></el-option>
-            <el-option label="女" value="女"></el-option>
+            <el-option label="男" value="1"></el-option>
+            <el-option label="女" value="0"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="学号" prop="sno">
-          <el-input v-model.number="ruleForm.sno"></el-input>
+        <el-form-item label="学号" prop="number">
+          <el-input v-model="ruleForm.number"></el-input>
         </el-form-item>
-        <el-form-item label="专业班级" prop="class">
-          <el-input v-model="ruleForm.class" placeholder="例：软件1803"></el-input>
+        <el-form-item label="专业班级" prop="grade">
+          <el-input v-model="ruleForm.grade" placeholder="例：软件1803"></el-input>
         </el-form-item>
         <el-form-item label="QQ" prop="qq">
           <el-input v-model.number="ruleForm.qq"></el-input>
         </el-form-item>
-        <el-form-item label="所选方向" prop="interest">
-          <el-select v-model="ruleForm.interest" placeholder="请选择方向">
+        <el-form-item label="所选方向" prop="directed">
+          <el-select v-model="ruleForm.directed" placeholder="请选择方向">
             <el-option label="产品" value="产品"></el-option>
             <el-option label="运营" value="运营"></el-option>
             <el-option label="视觉" value="视觉设计"></el-option>
@@ -40,18 +47,27 @@
   import axios from 'axios'
     export default {
         name: "Modify",
+
       data(){
+        let checknumber = (rule, value, callback) => {
+          if(value.length!=8){
+            return callback(new Error('请输入有效的8位学号'))
+          }else {
+            callback()
+          }
+        };
         return{
           ruleForm:{
             name:'',
             sex:'',
-            sno:'',
-            class:'',
+            number:'',
+            grade:'',
             qq:'',
-            interest:''
+            directed:''
           },
           labelPosition:'left',
           addre:"",
+          alert:'',
           rules:{
             name:[
               {required:true,message:'请输入姓名',trigger:'blur'},
@@ -60,18 +76,17 @@
             sex:[
               {required:true,message:'请选择性别',trigger:'change'}
             ],
-            sno:[
-              {required:true,message:'请输入学号',trigger:'blur'},
-              {type:'number',message:'请输入有效的8位学号',trigger:'blur'}
+            number:[
+              {required:true,message:'请输入学号',validator:checknumber,trigger:'blur'},
             ],
-            class:[
+            grade:[
               {required:true,message:'请输入专业班级',trigger:'blur'}
             ],
             qq:[
               {required:true,message:'请输入QQ号码',trigger:'blur'},
               {type:'number',message:'请输入有效的QQ号码',trigger:'blur'}
             ],
-            interest:[
+            directed:[
               {required:true,message:'请选择自己的方向',trigger:'change'}
             ]
           }
@@ -80,27 +95,60 @@
       methods:{
         fechId(id){
           console.log(id);
-          axios.get('/user/'+id + '.json')
-            .then(response=>{
-              console.log(response)
-              this.ruleForm = response.data
+          //通过手机号 拿到原有的数据信息 展示出来
+          let postData = this.$qs.stringify({
+            phone:id,
+          });
+          this.http({
+            method:'post',
+            url:'http://119.3.24.222:8080/nx/FindServlet',
+            data:postData
+          })
+            .then(res => {
+              // console.log(res);
+              // console.log(res.data.sex)
+              this.ruleForm = res.data;
+              if(res.data.sex == 1){
+                this.ruleForm.sex = '男'
+              }else{
+                this.ruleForm.sex = '女'
+              }
+
             })
+            .catch(function (err) {
+              console.log(err)
+            })
+
         },
+        failmessage(){
+          this.alert = '';
+          this.$router.push({path: `/edit/${this.ruleForm.phone}`})
+        },
+        // 将修改的信息提交至后台
         submitForm(ruleForm){
           this.$refs[ruleForm].validate((valid) => {
             if (valid) {
-              //提交并发送
-              axios.post('/user.json', this.ruleForm)
+            // 验证通过则发送
+              let postData = this.$qs.stringify({
+                name: this.ruleForm.name,
+                sex:this.ruleForm.sex,
+                number: this.ruleForm.number,
+                grade: this.ruleForm.grade,
+                qq: this.ruleForm.qq,
+                directed: this.ruleForm.directed,
+                status: 1
+              });
+              this.http({
+                method:'post',
+                url:'http://119.3.24.222:8080/nx/AlterServlet',
+                data:postData
+              })
                 .then(res => {
-                  if (res.status == 200) {
-                    // this.addre = '/edit/'+ this.ruleForm.id
-                    this.$router.push({path: `/edit/${res.data.name}`})
-
-                    console.log(res);
-                  } else {
-                    console.log("失败了")
+                  console.log(res)
+                  if(res.data.msg == true){
+                    console.log('sjd')
+                    this.alert = '修改成功'
                   }
-
                 })
                 .catch(function (err) {
                   console.log(err)
