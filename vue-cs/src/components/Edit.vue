@@ -117,12 +117,17 @@
                   console.log(res)
                   //获取请求头参数
                   // console.log(res.headers['Date']);
+
+
                   if(res.data.phone!=''&& res.data.phone!='undefined'){
 
                     this.$router.push({path: `/edit/${res.data.phone}`})
                   }else{
                     this.alert = '操作失误'
                   }
+
+
+
                   // if(res.data == true){
                   //   this.$router.push({path: `/edit/${res.data.name}`})
                   // }

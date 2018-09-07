@@ -44,6 +44,7 @@
 <script>
 import axios from 'axios'
   import Alert from './Alert'
+import jwt from 'jwt-decode';
   export default {
     data(){
       let telCheck = (rule, value, callback) => {
@@ -148,11 +149,21 @@ import axios from 'axios'
               url:"http://119.3.24.222:8080/nx/LoginServlet",
               data:testdata
             }).then(res=> {
+
               //登陆成功之后要做的事情
                 console.log(res);
-                //存储token
+
+                //存储token到ls
                 const {token} = res.data;
-                window.localStorage.setItem('token',token)
+                window.localStorage.setItem('token',token);
+
+                // 解析token
+                const decoded = jwt(token);
+                // console.log(decoded);
+
+                //分发action
+              this.$store.dispatch("setIsAuthenticated",!this.IsEmpty(decoded))
+
                 //验证码输入错误
                 if(res.data.msg == 0){
                     this.alert = this.ms2
@@ -170,10 +181,10 @@ import axios from 'axios'
                   this.$router.push({path: `/edit/${res.data.phone}`})
                   // this.$router.push({path: `/show`})
 
-                }
+               }
 
-                //我把它放在这只是想测一下我的提示错误的功能
-                // this.alert = "请输入有效的验证码"
+                // 我把它放在这只是想测一下我的提示错误的功能
+                this.alert = "请输入有效的验证码"
             }).catch(function(err){
               console.log(err);
             })
@@ -187,6 +198,8 @@ import axios from 'axios'
 
          })
       },
+
+
       AccesImg(){
         //获取图片验证码
         this.http({
@@ -200,7 +213,14 @@ import axios from 'axios'
         }).then(data=>{
           this.src=data
         })
-      }
+      },
+      IsEmpty(value){
+        return(
+          value === undefined || value === null || (typeof value === 'object' && Object.keys(value).length === 0 ) || (typeof value === 'string' && value.trim().length === 0)
+        )
+
+
+      },
     },
     //刚一进来 就向后端发送请求获取图形验证码
     created(){

@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import qs from 'qs'
 import axios from './utils/http'
+import store from './store'
 // import axios from 'axios'
 import Login from "./components/Login"
 import Edit from "./components/Edit"
@@ -52,8 +53,9 @@ Vue.prototype.http = axios
 Vue.prototype.$qs = qs
 Vue.use(Element)
 
-// 全局守卫
+// 配置全局守卫
 router.beforeEach((to,from,next)=>{
+  //获取token
   const islogin = localStorage.token?true:false;
   if(to.path == "/login" || to.path == "/"){
     next();
@@ -62,17 +64,11 @@ router.beforeEach((to,from,next)=>{
   }
 })
 
-
-
-
-
-
-
-
 /* eslint-disable no-new */
 
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>',

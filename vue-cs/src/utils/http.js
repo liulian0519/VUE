@@ -4,6 +4,7 @@ axios.interceptors.request.use(config=>{
   if(localStorage.token){
     config.headers.Authorization = localStorage.token
   }
-  return config
+  // console.log(config.headers.Authorization);
+  return config;
 });
 export default axios;
