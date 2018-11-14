@@ -1,12 +1,19 @@
 <template>
     <div class="exam-result">
-      更新笔试结果页面
+      <app-header></app-header>
+      <app-left></app-left>
     </div>
 </template>
 
 <script>
+  import leftnav from '../LeftNav'
+  import Header from '../Header'
     export default {
-        name: "ExamResult"
+        name: "ExamResult",
+      components:{
+        'app-header':Header,
+        'app-left':leftnav
+      }
     }
 </script>
 

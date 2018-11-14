@@ -6,6 +6,7 @@
             router
             :default-active="$route.path"
             class="el-menu-vertical-demo"
+            :default-openeds="['1','1-2','1-3']"
             @open="handleOpen"
             @close="handleClose">
             <el-submenu index="1">
@@ -20,14 +21,14 @@
               </el-menu-item-group>
               <el-submenu index="1-2">
                 <template slot="title">更新笔试状态</template>
-                <el-menu-item index="1-2-1">更新笔试进程</el-menu-item>
-                <el-menu-item index="1-2-2">更新试题</el-menu-item>
-                <el-menu-item index="1-2-3">更新笔试结果</el-menu-item>
+                <el-menu-item index="/examprocess">更新笔试进程</el-menu-item>
+                <el-menu-item index="/exampaper">更新试题</el-menu-item>
+                <el-menu-item index="/examresult">更新笔试结果</el-menu-item>
               </el-submenu>
               <el-submenu index="1-3">
                 <template slot="title">更新面试状态</template>
-                <el-menu-item index="1-3-1">更新面试进程</el-menu-item>
-                <el-menu-item index="1-3-2">更新面试结果</el-menu-item>
+                <el-menu-item index="/viewprocess">更新面试进程</el-menu-item>
+                <el-menu-item index="viewresult">更新面试结果</el-menu-item>
               </el-submenu>
             </el-submenu>
 
@@ -61,5 +62,11 @@
 </script>
 
 <style scoped>
-
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
+/*.leftnav >> .elrow{*/
+  /*width: 600px;*/
+/*}*/
 </style>

@@ -9,7 +9,7 @@
     </el-alert>
     <p>填写信息</p>
     <el-form :label-position="labelPosition" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" status-icon>
-      <el-form-item label="姓名" prop="name">
+      <el-form-item label="姓名" prop="name" placeholder="请输入姓名">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
       <el-form-item label="性别" prop="sex">
@@ -18,7 +18,7 @@
           <el-option label="女" value="0"></el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="学号" prop="number">
+      <el-form-item label="学号" prop="number" placeholder="请输入8位学号">
         <el-input v-model="ruleForm.number"></el-input>
       </el-form-item>
       <el-form-item label="专业班级" prop="grade">

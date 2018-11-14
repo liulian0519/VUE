@@ -1,15 +1,17 @@
 <template>
     <div class="modify">
+      <!--<el-button :plain="true" @click="open2">成功</el-button>-->
       <el-alert
         v-show="alert"
         :title="alert"
-        type="error"
+        type="success"
+        close-text="知道了"
         @close="failmessage()"
         show-icon>
       </el-alert>
       <p>修改信息</p>
       <el-form :label-position="labelPosition" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm" status-icon>
-        <el-form-item label="姓名" prop="name">
+        <el-form-item label="姓名" prop="name" placeholder="请输入姓名">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
         <el-form-item label="性别" prop="sex">
@@ -18,7 +20,7 @@
             <el-option label="女" value="0"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="学号" prop="number">
+        <el-form-item label="学号" prop="number" placeholder="请输入8位学号">
           <el-input v-model="ruleForm.number"></el-input>
         </el-form-item>
         <el-form-item label="专业班级" prop="grade">
@@ -92,6 +94,9 @@
           }
         }
       },
+      computed:{
+
+      },
       methods:{
         fechId(id){
           console.log(id);
@@ -126,9 +131,16 @@
         },
         // 将修改的信息提交至后台
         submitForm(ruleForm){
+          // console.log(typeof(this.ruleForm.qq));
+          this.ruleForm.qq = Number(this.ruleForm.qq)
           this.$refs[ruleForm].validate((valid) => {
             if (valid) {
             // 验证通过则发送
+              if(this.ruleForm.sex == '男'){
+                this.ruleForm.sex = 1
+              }else{
+                this.ruleForm.sex = 0
+              }
               let postData = this.$qs.stringify({
                 name: this.ruleForm.name,
                 sex:this.ruleForm.sex,
@@ -138,6 +150,7 @@
                 directed: this.ruleForm.directed,
                 status: 1
               });
+              console.log(this.ruleForm.name + this.ruleForm.sex+this.ruleForm.number+this.ruleForm.grade+this.ruleForm.qq+ this.ruleForm.directed)
               this.http({
                 method:'post',
                 url:'http://119.3.24.222:8080/nx/AlterServlet',
@@ -146,8 +159,9 @@
                 .then(res => {
                   console.log(res)
                   if(res.data.msg == true){
-                    console.log('sjd')
+                    // console.log('sjd')
                     this.alert = '修改成功'
+                   // this.$router.push({path: `/edit/${this.ruleForm.phone}`})
                   }
                 })
                 .catch(function (err) {

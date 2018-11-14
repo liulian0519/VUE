@@ -19,7 +19,7 @@ const router = new VueRouter({
 //配置axios的原型
 Vue.prototype.http = axios
 //配置axios的默认地址
-axios.defaults.baseURL = "https://vue-back-94726.firebaseio.com/"
+// axios.defaults.baseURL = "https://vue-back-94726.firebaseio.com/"
 
 //使用ElementUI
 Vue.use(Element)

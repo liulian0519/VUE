@@ -113,7 +113,8 @@ import jwt from 'jwt-decode';
                 data:postData,
               }).then(res=>{
                 console.log(res);
-                if(res.data.indexOf(true)!=-1){
+                console.log(res.data.msg)
+                if(res.data.msg == true){
                   this.sendAuthCode = false;
                   //设置倒计时秒
                   this.auth_time = 60;
@@ -150,6 +151,10 @@ import jwt from 'jwt-decode';
               data:testdata
             }).then(res=> {
 
+              console.log(res.data.msg)
+              if(res.data.msg== 0){
+                this.alert = this.ms2
+              }
               //登陆成功之后要做的事情
                 console.log(res);
 
@@ -163,11 +168,6 @@ import jwt from 'jwt-decode';
 
                 //分发action
               this.$store.dispatch("setIsAuthenticated",!this.IsEmpty(decoded))
-
-                //验证码输入错误
-                if(res.data.msg == 0){
-                    this.alert = this.ms2
-                }
                 //首次登陆
                 if(res.data.msg == 1){
                     // console.log("首次登录") 跳转至填写信息界面
@@ -183,10 +183,9 @@ import jwt from 'jwt-decode';
 
                }
 
-                // 我把它放在这只是想测一下我的提示错误的功能
-                this.alert = "请输入有效的验证码"
             }).catch(function(err){
-              console.log(err);
+               console.log(err);
+              // this.alert = this.ms2
             })
           }
           // else{
